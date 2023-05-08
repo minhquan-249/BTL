@@ -47,7 +47,7 @@ void ds_nor(Ds *&ds_nor)
             filein >> (NOR *&)nr;
             ds_sp_file(sp, nr);
             nr->setDs_sp(sp);
-            // ds_dv_file(dv, nr);
+            ds_dv_file(dv, nr);
             nr->setDs_dv(dv);
             last_list(ds_nor, nr);
         }

@@ -75,7 +75,7 @@ void hoi_san_pham()
 {
     cout << endl;
     cout << '|' << setfill('=') << setw(53) << '|' << setfill(' ') << endl;
-    cout << '|' << left << setw(39) << "\t\tKhach hang co mua them san pham khong ?" << '|' << endl;
+    cout << '|' << left << setw(25) << "\t\tKhach hang co mua them san pham khong ?" << '|' << endl;
     cout << '|' << setw(46) << "\t1.Co, tien hanh nhap" << '|' << endl;
     cout << '|' << setw(46) << "\t0.Khong" << '|' << right << endl;
     cout << '|' << setfill('=') << setw(53) << '|' << setfill(' ') << endl;
@@ -86,7 +86,7 @@ void hoi_dvu()
 {
     cout << endl;
     cout << '|' << setfill('=') << setw(53) << '|' << setfill(' ') << endl;
-    cout << '|' << left << setw(39) << "\t\tKhach hang co dung them dich vu khong" << '|' << endl;
+    cout << '|' << left << setw(25) << "\t\tKhach hang co dung them dich vu khong" << '|' << endl;
     cout << '|' << setw(46) << "\t1.Co, tien hanh nhap" << '|' << endl;
     cout << '|' << setw(46) << "\t0.Khong" << '|' << right << endl;
     cout << '|' << setfill('=') << setw(53) << '|' << setfill(' ') << endl;

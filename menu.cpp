@@ -217,7 +217,7 @@ void xuat_hd(Ds *&ds)
     int x;
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
-    kh = (KH *)Find(ds, id, x);
+    kh = (KH *)Find(ds,"KH" + id, x);
     if (kh == NULL)
     {
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -364,9 +364,9 @@ void add_if(Ds *&ds)
         cin.ignore();
         if (x == 1)
         {
-            kh = new KH;
+            kh = new NOR;
             cout << "\n\tThong tin khach hang can them" << endl;
-            cin >> (KH *&)kh;
+            cin >> (NOR *&)kh;
         }
         else if (x == 2)
         {
@@ -404,7 +404,7 @@ void add_pro(Ds *&ds)
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
 
-    kh = (KH *)Find(ds, id, x);
+    kh = (KH *)Find(ds,"KH" + id, x);
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
     else
@@ -435,7 +435,7 @@ void add_ser(Ds *&ds)
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
 
-    kh = (KH *)Find(ds, id, x);
+    kh = (KH *)Find(ds,"KH"+ id, x);
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
     else
@@ -490,7 +490,7 @@ void delete_if(Ds *&ds)
         {
             cout << "\n\tMa khach hang can xoa: ";
             getline(cin, b);
-            kh = (KH *)Find(ds, b, x);
+            kh = (KH *)Find(ds,"KH"+ b, x);
 
             if (kh == NULL)
                 cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -515,7 +515,7 @@ void delete_pro_ser(Ds *&ds)
 
     cout << "\n\tMa khach hang can xoa san pham hoac dich vu: ";
     getline(cin, b);
-    kh = (KH *)Find(ds, b, x);
+    kh = (KH *)Find(ds,"KH"+ b, x);
 
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;

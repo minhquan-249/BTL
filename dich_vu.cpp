@@ -35,7 +35,7 @@ istream& operator>>(istream &is, DV* &a){
 
 ostream& operator<<(ostream &os, DV* a){
     os << '|' << setw(25) << a -> tdv;
-    os << '|' << setw(14) << a -> gdv << '|' << endl;
+    os << '|' << setw(14) << a -> gdv << setw(1) << '|' << endl;
     return os;
 } 
 
