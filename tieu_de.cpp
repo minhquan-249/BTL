@@ -117,11 +117,11 @@ void td_person()
 void td_nv()
 {
     cout << endl;
-    cout << '|' << setfill('=') << setw(126) << '|' << setfill(' ') << endl;
+    cout << '|' << setfill('=') << setw(140) << '|' << setfill(' ') << endl;
     td_person();
     cout << '|' << setw(25) << "Chuc vu";
     cout << '|' << setw(15) << "Luong co ban|" << endl;
-    cout << '|' << setfill('=') << setw(126) << '|' << setfill(' ') << endl;
+    cout << '|' << setfill('=') << setw(140) << '|' << setfill(' ') << endl;
 }
 
 void td_kh()
@@ -152,19 +152,20 @@ void td_sp()
 void td_dv()
 {
     cout << endl;
-    cout << '|' << setfill('=') << setw(19) << '|' << setfill(' ') << endl;
+    cout << '|' << setfill('=') << setw(93) << '|' << setfill(' ') << endl;
     cout << '|' << setw(20) << "Ho ten";
-    cout << '|' << setw(15) << "Ma khach hang";
+    cout << '|' << setw(15) << "So dien thoai";
+    cout << '|' << setw(13) << "Ngay mua";
     cout << '|' << setw(25) << "Ten dich vu";
-    cout << '|' << setw(15) << "Gia dich vu|" << endl;
-    cout << '|' << setfill('=') << setw(79) << '|' << setfill(' ') << endl;
+    cout << '|' << setw(15) << "Gia dich vu" << '|' << endl;
+    cout << '|' << setfill('=') << setw(93) << '|' << setfill(' ') << endl;
 }
 
 void line_page()
 {
     cout << '|' << setw(20) << ' ';
     cout << '|' << setw(15) << ' ';
-    cout << '|' << setw(15) << ' ';
+    cout << '|' << setw(13) << ' ';
 }
 
 void line_page_sp()
@@ -202,5 +203,21 @@ void hoi_qlps_qlsp()
     cout << '|' << left << setw(25) << "\t1. Quan ly Nguoi" << '|' << endl;
     cout << '|' << setw(25) << "\t2. Quan ly san pham" << '|' << endl;
     cout << '|' << setfill('=') << setw(32) << right << '|' << setfill(' ') << endl;
+    cout << "\n\t\tLUA CHON: ";
+}
+
+void menu_chon2()
+{
+    cout << endl;
+    cout << '|' << setfill('=') << setw(29) << "MENU" << setw(26) << '|' << setfill(' ') << endl;
+    cout << '|' << left << setw(48) << "\t1. Nhap danh sach san pham" << '|' << endl;
+    cout << '|' << setw(48) << "\t2. Xuat danh sach san pham" << '|' << endl;
+    cout << '|' << setw(48) << "\t3. Them san pham vao cua hang" << '|' << endl;
+    cout << '|' << setw(48) << "\t4. Xoa san pham khoi cua hang" << '|' << endl;
+    cout << '|' << setw(48) << "\t5. Tim kiem san pham " << '|' << endl;
+    cout << '|' << setw(48) << "\t6. Sap xep san pham " << '|' << endl;
+    cout << '|' << setw(48) << "\t7. Sua thong tin san pham" << '|' << endl;
+    cout << '|' << setw(48) << "\t0. Thoat" << '|' << right << endl;
+    cout << '|' << setfill('=') << setw(55) << '|' << setfill(' ') << endl;
     cout << "\n\t\tLUA CHON: ";
 }

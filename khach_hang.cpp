@@ -101,7 +101,7 @@ void ds_sp_file(Ds *&ds_sp, KH *kh)
     for (int i = 0; i < x; i++)
     {
         getline(filein2, id);
-        if (id == kh->getID())
+        if (id == tach_id(kh->getID(), 1))
         {
             filein2 >> y;
             filein2.ignore();
@@ -123,7 +123,6 @@ void ds_sp_file(Ds *&ds_sp, KH *kh)
                 delete sp1;
             }
         }
-
     }
 }
 
@@ -141,14 +140,14 @@ void ds_dv_file(Ds *&ds_dv, KH *kh)
     for (int i = 0; i < x; i++)
     {
         getline(filein2, id);
-        if (id == kh->getID())
+        if (id == tach_id(kh->getID(), 1))
         {
             filein2 >> y;
             filein2.ignore();
             for (int j = 0; j < y; j++)
             {
                 dv1 = new DV;
-                filein2 >> (DV *&) dv1;
+                filein2 >> (DV *&)dv1;
                 last_list(ds_dv, dv1);
             }
         }
@@ -160,7 +159,7 @@ void ds_dv_file(Ds *&ds_dv, KH *kh)
             {
                 dv1 = new DV;
                 filein2 >> (DV *&)dv1;
-                //delete dv1;
+                delete dv1;
             }
         }
     }

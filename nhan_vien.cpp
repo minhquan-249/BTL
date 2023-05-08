@@ -44,8 +44,8 @@ ostream &operator<<(ostream &os, NV *a)
 {
     os << (PS *)a;
     os << '|' << setw(25) << a->cv;
-    os << '|' << setw(10) << a->lcb << '|' << endl;
-    os << '|' << setfill('=') << setw(152) << '|' << setfill(' ') << endl;
+    os << '|' << setw(10) << a->lcb <<setw(5)<< '|' << endl;
+    os << '|' << setfill('=') << setw(140) << '|' << setfill(' ') << endl;
     return os;
 }
 

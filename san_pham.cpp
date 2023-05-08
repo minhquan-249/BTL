@@ -49,7 +49,7 @@ ostream& operator<<(ostream &os, SP* a){
     os << '|' << setw(20) << a -> id1;
     os << '|' << setw(10) << a -> amount;
     os << '|' << setw(15) << a -> price;
-    os << '|' << setw(10) << a -> tong_tien() << '|' << endl;
+    os << '|' << setw(10) << a -> tong_tien()<< setw(4) << '|' << endl;
     return os;
 }
 

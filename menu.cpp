@@ -83,7 +83,7 @@ void xuat(Ds *&ds, int x, int k)
     string sdt;
     while (ds != NULL)
     {
-        ps = (PS *) ds->getData();
+        ps = (PS *)ds->getData();
         if (check_id(ps) and k == 1)
         {
             kh = (KH *)ds->getData();
@@ -110,12 +110,15 @@ void xuat_spham(KH *kh)
     Ds *sp;
     bool x = true;
     cout << '|' << setw(20) << kh->getHt();
-    cout << '|' << setw(15) << kh->getSdt();
+    cout << '|' << setw(15) <<kh->getSdt();
     cout << kh->getNm();
     x = true;
 
-    sp = kh -> getDs_sp();
-    if (sp == NULL) {line_page_sp();}
+    sp = kh->getDs_sp();
+    if (sp == NULL)
+    {
+        line_page_sp();
+    }
 
     while (sp != NULL)
     {
@@ -127,7 +130,7 @@ void xuat_spham(KH *kh)
         else
         {
             line_page();
-            cout << '|' << setfill('=') << setw(85) << '|' << setfill(' ') << endl;
+            cout << '|' << setfill('=') << setw(88) << '|' << setfill(' ') << endl;
             line_page();
             cout << (SP *)sp->getData();
         }
@@ -142,7 +145,7 @@ void xuat_dv1(KH *kh)
     bool x = true;
     cout << '|' << setw(20) << kh->getHt();
     cout << '|' << setw(15) << kh->getSdt();
-    cout << '|' << setw(15) << kh->getNm();
+    cout << kh->getNm();
     x = true;
     dv = kh->getDs_dv();
     if (dv == NULL)
@@ -163,7 +166,7 @@ void xuat_dv1(KH *kh)
         }
         dv = dv->getNext();
     }
-    cout << '|' << setfill('=') << setw(94) << '|' << setfill(' ') << endl;
+    cout << '|' << setfill('=') << setw(93) << '|' << setfill(' ') << endl;
 }
 
 void xuat_sp(Ds *&ds)
@@ -177,9 +180,9 @@ void xuat_sp(Ds *&ds)
         ps = (PS *)ds->getData();
         if (check_id(ps))
         {
-            kh = (KH *) ds->getData();
+            kh = (KH *)ds->getData();
             xuat_spham(kh);
-            sp = kh -> getDs_sp();
+            sp = kh->getDs_sp();
         }
         ds = ds->getNext();
     }
@@ -565,7 +568,7 @@ void delete_pro_ser(Ds *&ds)
                 do
                 {
                     if (dem_ptu(dv) > 1)
-                        cout << "\n\tVi tri thuoc can xoa (1 - " << dem_ptu(dv) << " ): ";
+                        cout << "\n\tVi tri san pham can xoa (1 - " << dem_ptu(dv) << " ): ";
                     else
                     {
                         x = 1;
@@ -761,7 +764,7 @@ void sua_sp_dv(Ds *&ds)
     string id;
     int x, y = 0;
 
-    cout << "\n\tMa khach hang can sua don thuoc hoac dich vu: ";
+    cout << "\n\tMa khach hang can sua san pham hoac dich vu: ";
     getline(cin, id);
     kh = (KH *)Find(ds, id, x);
 
@@ -959,89 +962,90 @@ void menu()
     cin >> x;
     if (x == 1)
     {
-nhaplai:
-    menu_chon();
-    cin >> x;
-    cin.ignore();
-    Ds *tg = ds;
+    nhaplai:
+        menu_chon();
+        cin >> x;
+        cin.ignore();
+        Ds *tg = ds;
 
-    switch (x)
-    {
-    case 1:
-        if (x == 1)
+        switch (x)
         {
-            if (c)
+        case 1:
+            if (x == 1)
             {
-                nhap(ds);
-                c = false;
+                if (c)
+                {
+                    nhap(ds);
+                    c = false;
+                }
+                else
+                    cout << "\nDa nhap danh sach truoc do!!!" << endl;
             }
-            else
-                cout << "\nDa nhap danh sach truoc do!!!" << endl;
+            goto nhaplai;
+        case 2:
+            td_kh();
+            xuat(tg, 0, 1);
+            goto nhaplai;
+        case 3:
+            td_nv();
+            xuat(tg, 0, 0);
+            goto nhaplai;
+        case 4:
+            td_kh();
+            xuat(tg, 2, 1);
+            goto nhaplai;
+        case 5:
+            td_kh();
+            xuat(tg, 1, 1);
+            goto nhaplai;
+        case 6:
+            td_sp();
+            xuat_sp(tg);
+            goto nhaplai;
+        case 7:
+            td_dv();
+            xuat_dv(tg);
+            goto nhaplai;
+        case 8:
+            xuat_hd(tg);
+            goto nhaplai;
+        case 9:
+            add_if(ds);
+            goto nhaplai;
+        case 10:
+            add_pro(ds);
+            goto nhaplai;
+        case 11:
+            add_ser(ds);
+            goto nhaplai;
+        case 12:
+            delete_if(ds);
+            goto nhaplai;
+        case 13:
+            delete_pro_ser(ds);
+            goto nhaplai;
+        case 14:
+            arr_nv(tg);
+            goto nhaplai;
+        case 15:
+            arr_kh(tg);
+            goto nhaplai;
+        case 16:
+            change_if(ds);
+            goto nhaplai;
+        case 17:
+            sua_sp_dv(ds);
+            goto nhaplai;
+        case 18:
+            find_if(ds);
+            goto nhaplai;
+        case 19:
+            tim_sp_dv(ds);
+            goto nhaplai;
+        case 0:
+            break;
         }
-        goto nhaplai;
-    case 2:
-        td_kh();
-        xuat(tg, 0, 1);
-        goto nhaplai;
-    case 3:
-        td_nv();
-        xuat(tg, 0, 0);
-        goto nhaplai;
-    case 4:
-        td_kh();
-        xuat(tg, 2, 1);
-        goto nhaplai;
-    case 5:
-        td_kh();
-        xuat(tg, 1, 1);
-        goto nhaplai;
-    case 6:
-        td_sp();
-        xuat_sp(tg);
-        goto nhaplai;
-    case 7:
-        td_dv();
-        xuat_dv(tg);
-        goto nhaplai;
-    case 8:
-        xuat_hd(tg);
-        goto nhaplai;
-    case 9:
-        add_if(ds);
-        goto nhaplai;
-    case 10:
-        add_pro(ds);
-        goto nhaplai;
-    case 11:
-        add_ser(ds);
-        goto nhaplai;
-    case 12:
-        delete_if(ds);
-        goto nhaplai;
-    case 13:
-        delete_pro_ser(ds);
-        goto nhaplai;
-    case 14:
-        arr_nv(tg);
-        goto nhaplai;
-    case 15:
-        arr_kh(tg);
-        goto nhaplai;
-    case 16:
-        change_if(ds);
-        goto nhaplai;
-    case 17:
-        sua_sp_dv(ds);
-        goto nhaplai;
-    case 18:
-        find_if(ds);
-        goto nhaplai;
-    case 19:
-        tim_sp_dv(ds);
-        goto nhaplai;
-    case 0:
-        break;
     }
-    }
-    else if (x==2) cout<<"bai bai";
+    else if (x == 2)
+        cout << "bai bai";
 }
