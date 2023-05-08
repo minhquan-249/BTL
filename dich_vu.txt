@@ -1,0 +1,11 @@
+2
+0001
+2
+Thue nhan vien cham soc
+300000
+Van chuyen hang Hoa
+500000
+0003
+1
+Mua tra gop
+100000

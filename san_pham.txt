@@ -1,0 +1,28 @@
+3
+0001
+1
+Dior New Look Dress
+00001
+1
+3200000
+0002
+2
+Vay Dior New Look
+00001
+1
+3200000
+Lady Dior Bag
+00002
+1
+4800000
+0003
+2
+Dior Caro Bag
+00003
+1
+5040000
+Dior Book Tote
+00004
+1
+6300000
+
