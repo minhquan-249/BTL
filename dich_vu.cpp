@@ -35,7 +35,7 @@ istream& operator>>(istream &is, DV* &a){
 
 ostream& operator<<(ostream &os, DV* a){
     os << '|' << setw(25) << a -> tdv;
-    os << '|' << setw(14) << a -> gdv << setw(1) << '|' << endl;
+    os << '|' << setw(14) << a -> gdv << setw(2) << '|' << endl;
     return os;
 } 
 
@@ -70,6 +70,7 @@ void ds_dvu(Ds* &ds_dv){
             i++;
             hoi_nhap();
             cin >> x;
+            cin.ignore();
         }while(x == 1);
     }
 }

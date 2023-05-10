@@ -21,7 +21,8 @@ istream &operator>>(istream &is, NOR *&a)
 ostream &operator<<(ostream &os, NOR *a)
 {
     os << (KH *)a;
-    os << '|' << setfill('=') << setw(264) << '|' << setfill(' ') << endl;
+    cout<< setw(15) << '|' << endl;
+    cout << '|' << setfill('=') << setw(134) << '|' << setfill(' ') << endl;
     return os;
 }
 

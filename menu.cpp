@@ -79,7 +79,8 @@ void xuat(Ds *&ds, int x, int k)
 {
     PS *ps;
     KH *kh;
-
+    NOR *nor;
+    VIP *vip;
     string sdt;
     while (ds != NULL)
     {
@@ -89,11 +90,15 @@ void xuat(Ds *&ds, int x, int k)
             kh = (KH *)ds->getData();
             sdt = kh->getSdt();
             if (tach_sdt(sdt) and x == 1)
-                cout << kh;
+                cout << (VIP *)kh;
             if (!tach_sdt(sdt) and x == 2)
-                cout << kh;
+                cout << (NOR *)kh;
             if (x == 0)
+            {
                 cout << kh;
+                cout << setw(15) << '|' << endl;
+                cout << '|' << setfill('=') << setw(134) << '|' << setfill(' ') << endl;
+            }
         }
         else if (!check_id(ps) and k == 0)
             cout << (NV *)ds->getData();
@@ -110,7 +115,7 @@ void xuat_spham(KH *kh)
     Ds *sp;
     bool x = true;
     cout << '|' << setw(20) << kh->getHt();
-    cout << '|' << setw(15) <<kh->getSdt();
+    cout << '|' << setw(15) << kh->getID();
     cout << kh->getNm();
     x = true;
 
@@ -144,7 +149,7 @@ void xuat_dv1(KH *kh)
     Ds *dv;
     bool x = true;
     cout << '|' << setw(20) << kh->getHt();
-    cout << '|' << setw(15) << kh->getSdt();
+    cout << '|' << setw(15) << kh->getID();
     cout << kh->getNm();
     x = true;
     dv = kh->getDs_dv();
@@ -160,7 +165,7 @@ void xuat_dv1(KH *kh)
         else
         {
             line_page();
-            cout << '|' << setfill('=') << setw(41) << '|' << setfill(' ') << endl;
+            cout << '|' << setfill('=') << setw(42) << '|' << setfill(' ') << endl;
             line_page();
             cout << (DV *)dv->getData();
         }
@@ -212,12 +217,13 @@ void xuat_hd(Ds *&ds)
     Ds *tg;
     DV *dv;
     SP *sp;
+    VIP *vip;
     string id;
     long int t1 = 0, t2 = 0;
     int x;
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
-    kh = (KH *)Find(ds,"KH" + id, x);
+    kh = (KH *)Find(ds, "KH" + id, x);
     if (kh == NULL)
     {
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -228,11 +234,21 @@ void xuat_hd(Ds *&ds)
     {
         if (tach_sdt(kh->getSdt()))
         {
+            vip = (VIP *)kh;
             tg = kh->getDs_sp();
             while (tg != NULL)
             {
                 sp = (SP *)tg->getData();
-                t1 += 0.5 * sp->tong_tien();
+                if (vip->getVIP() == "Bac")
+                {
+                    t1 += 0.05 * sp->tong_tien();
+                }
+                else if (vip->getVIP() == "Vang")
+                {
+                    t1 += 0.1 * sp->tong_tien();
+                }
+                else
+                    t1 += 0.15 * sp->tong_tien();
                 tg = tg->getNext();
             }
 
@@ -240,7 +256,16 @@ void xuat_hd(Ds *&ds)
             while (tg != NULL)
             {
                 dv = (DV *)tg->getData();
-                t2 += 0.3 * dv->getGdv();
+                if (vip->getVIP() == "Bac")
+                {
+                    t2 += 0.05 * sp->tong_tien();
+                }
+                else if (vip->getVIP() == "Vang")
+                {
+                    t2 += 0.1 * sp->tong_tien();
+                }
+                else
+                    t2 += 0.15 * dv->getGdv();
                 tg = tg->getNext();
             }
         }
@@ -269,7 +294,7 @@ void xuat_hd(Ds *&ds)
     cout << '|' << setw(15) << kh->getSdt();
     cout << '|' << setw(15) << t1;
     cout << '|' << setw(15) << t2;
-    cout << '|' << setw(14) << kh->thanh_tien() << '|' << endl;
+    cout << '|' << setw(15) << t1 + t2 << '|' << endl;
     cout << '|' << setfill('=') << setw(101) << '|' << setfill(' ') << endl;
 }
 
@@ -334,9 +359,6 @@ void add_if(Ds *&ds)
     Ds *sp, *dv;
     KH *kh;
     int k, x;
-    hoi_nv_kh();
-    cin >> x;
-
     do
     {
         if (dem_ptu(ds) > 1)
@@ -348,6 +370,8 @@ void add_if(Ds *&ds)
         }
         cin >> k;
     } while (k > dem_ptu(ds));
+    hoi_nv_kh();
+    cin >> x;
 
     cin.ignore();
     if (x == 1)
@@ -389,7 +413,8 @@ void add_if(Ds *&ds)
     {
         last_list(ds, ps);
     }
-    ds = add_ds(ds, ps, k);
+    else
+        ds = add_ds(ds, ps, k);
 }
 
 void add_pro(Ds *&ds)
@@ -404,7 +429,7 @@ void add_pro(Ds *&ds)
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
 
-    kh = (KH *)Find(ds,"KH" + id, x);
+    kh = (KH *)Find(ds, "KH" + id, x);
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
     else
@@ -435,7 +460,7 @@ void add_ser(Ds *&ds)
     cout << "\n\tMa khach hang: ";
     getline(cin, id);
 
-    kh = (KH *)Find(ds,"KH"+ id, x);
+    kh = (KH *)Find(ds, "KH" + id, x);
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
     else
@@ -490,7 +515,7 @@ void delete_if(Ds *&ds)
         {
             cout << "\n\tMa khach hang can xoa: ";
             getline(cin, b);
-            kh = (KH *)Find(ds,"KH"+ b, x);
+            kh = (KH *)Find(ds, "KH" + b, x);
 
             if (kh == NULL)
                 cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -515,7 +540,7 @@ void delete_pro_ser(Ds *&ds)
 
     cout << "\n\tMa khach hang can xoa san pham hoac dich vu: ";
     getline(cin, b);
-    kh = (KH *)Find(ds,"KH"+ b, x);
+    kh = (KH *)Find(ds, "KH" + b, x);
 
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -676,6 +701,8 @@ void arr_kh(Ds *&ds)
     while (ds_kh != NULL)
     {
         cout << (KH *)ds_kh->getData();
+        cout << setw(15) << '|' << endl;
+        cout << '|' << setfill('=') << setw(134) << '|' << setfill(' ') << endl;
         ds_kh = ds_kh->getNext();
     }
 }
@@ -713,7 +740,7 @@ void change_if(Ds *&ds)
     {
         cout << "\n\tMa khach hang can sua: ";
         getline(cin, a);
-        ps = Find(ds1, a, x);
+        ps = Find(ds1, "KH" + a, x);
 
         if (ps == NULL)
         {
@@ -721,7 +748,7 @@ void change_if(Ds *&ds)
             return;
         }
 
-        kh = (KH *)ds->getData();
+        kh = (KH *)ps;
         if (!tach_sdt(kh->getSdt()))
         {
             kh = new KH;
@@ -766,7 +793,7 @@ void sua_sp_dv(Ds *&ds)
 
     cout << "\n\tMa khach hang can sua san pham hoac dich vu: ";
     getline(cin, id);
-    kh = (KH *)Find(ds, id, x);
+    kh = (KH *)Find(ds, "KH" + id, x);
 
     if (kh == NULL)
         cout << "\n\tKhong ton tai ma khach hang nay!!!" << endl;
@@ -889,7 +916,7 @@ void find_if(Ds *&ds)
     {
         cout << "\n\tMa khach hang can tim kiem: ";
         getline(cin, a);
-        ps = Find(ds, a, x);
+        ps = Find(ds, "KH" + a, x);
 
         if (ps == NULL)
         {
@@ -913,7 +940,7 @@ void tim_sp_dv(Ds *&ds)
 
     cout << "\n\tMa khach hang can tim kiem: ";
     getline(cin, a);
-    kh = (KH *)Find(ds, a, x);
+    kh = (KH *)Find(ds, "KH" + a, x);
 
     if (kh == NULL)
     {
@@ -958,94 +985,87 @@ void menu()
     Ds *ds;
     init(ds);
     bool c = true;
-    hoi_qlps_qlsp();
+nhaplai:
+    menu_chon();
     cin >> x;
-    if (x == 1)
-    {
-    nhaplai:
-        menu_chon();
-        cin >> x;
-        cin.ignore();
-        Ds *tg = ds;
+    cin.ignore();
+    Ds *tg = ds;
 
-        switch (x)
+    switch (x)
+    {
+    case 1:
+        if (x == 1)
         {
-        case 1:
-            if (x == 1)
+            if (c)
             {
-                if (c)
-                {
-                    nhap(ds);
-                    c = false;
-                }
-                else
-                    cout << "\nDa nhap danh sach truoc do!!!" << endl;
+                nhap(ds);
+                c = false;
             }
-            goto nhaplai;
-        case 2:
-            td_kh();
-            xuat(tg, 0, 1);
-            goto nhaplai;
-        case 3:
-            td_nv();
-            xuat(tg, 0, 0);
-            goto nhaplai;
-        case 4:
-            td_kh();
-            xuat(tg, 2, 1);
-            goto nhaplai;
-        case 5:
-            td_kh();
-            xuat(tg, 1, 1);
-            goto nhaplai;
-        case 6:
-            td_sp();
-            xuat_sp(tg);
-            goto nhaplai;
-        case 7:
-            td_dv();
-            xuat_dv(tg);
-            goto nhaplai;
-        case 8:
-            xuat_hd(tg);
-            goto nhaplai;
-        case 9:
-            add_if(ds);
-            goto nhaplai;
-        case 10:
-            add_pro(ds);
-            goto nhaplai;
-        case 11:
-            add_ser(ds);
-            goto nhaplai;
-        case 12:
-            delete_if(ds);
-            goto nhaplai;
-        case 13:
-            delete_pro_ser(ds);
-            goto nhaplai;
-        case 14:
-            arr_nv(tg);
-            goto nhaplai;
-        case 15:
-            arr_kh(tg);
-            goto nhaplai;
-        case 16:
-            change_if(ds);
-            goto nhaplai;
-        case 17:
-            sua_sp_dv(ds);
-            goto nhaplai;
-        case 18:
-            find_if(ds);
-            goto nhaplai;
-        case 19:
-            tim_sp_dv(ds);
-            goto nhaplai;
-        case 0:
-            break;
+            else
+                cout << "\nDa nhap danh sach truoc do!!!" << endl;
         }
+        goto nhaplai;
+    case 2:
+        td_kh();
+        xuat(tg, 0, 1);
+        goto nhaplai;
+    case 3:
+        td_nv();
+        xuat(tg, 0, 0);
+        goto nhaplai;
+    case 4:
+        td_kh();
+        xuat(tg, 2, 1);
+        goto nhaplai;
+    case 5:
+        td_kh();
+        xuat(tg, 1, 1);
+        goto nhaplai;
+    case 6:
+        td_sp();
+        xuat_sp(tg);
+        goto nhaplai;
+    case 7:
+        td_dv();
+        xuat_dv(tg);
+        goto nhaplai;
+    case 8:
+        xuat_hd(tg);
+        goto nhaplai;
+    case 9:
+        add_if(ds);
+        goto nhaplai;
+    case 10:
+        add_pro(ds);
+        goto nhaplai;
+    case 11:
+        add_ser(ds);
+        goto nhaplai;
+    case 12:
+        delete_if(ds);
+        goto nhaplai;
+    case 13:
+        delete_pro_ser(ds);
+        goto nhaplai;
+    case 14:
+        arr_nv(tg);
+        goto nhaplai;
+    case 15:
+        arr_kh(tg);
+        goto nhaplai;
+    case 16:
+        change_if(ds);
+        goto nhaplai;
+    case 17:
+        sua_sp_dv(ds);
+        goto nhaplai;
+    case 18:
+        find_if(ds);
+        goto nhaplai;
+    case 19:
+        tim_sp_dv(ds);
+        goto nhaplai;
+    case 0:
+        break;
     }
-    else if (x == 2)
-        cout << "bai bai";
 }

@@ -10,7 +10,7 @@ public:
     VIP(string vip);
     ~VIP() {}
 
-    friend istream &operator>>(istream &is, VIP *a);
+    friend istream &operator>>(istream &is, VIP *&a);
     friend ostream &operator<<(ostream &os, VIP *a);
 
     void setVIP(string vip);
@@ -22,7 +22,7 @@ VIP ::VIP(string vip)
     this->vip = vip;
 }
 
-istream &operator>>(istream &is, VIP *a)
+istream &operator>>(istream &is, VIP *&a)
 {
     is >> (KH *&)a;
     is.ignore();
@@ -35,8 +35,8 @@ istream &operator>>(istream &is, VIP *a)
 ostream &operator<<(ostream &os, VIP *a)
 {
     os << (KH *)a;
-    os << '|' << setw(15) << a->vip << '|' << endl;
-    os << '|' << setfill('=') << setw(264) << '|' << setfill(' ') << endl;
+    os <<setw(6)<< a->vip << setw(9)<< '|' << endl;
+    os << '|' << setfill('=') << setw(134) << '|' << setfill(' ') << endl;
     return os;
 }
 

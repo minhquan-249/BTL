@@ -24,8 +24,6 @@ public:
 
     void setDs_dv(Ds *&ds_dv);
     Ds *getDs_dv();
-
-    long int thanh_tien();
 };
 
 KH ::KH(NS nm, Ds *ds_sp, Ds *ds_dv)
@@ -48,8 +46,7 @@ istream &operator>>(istream &is, KH *&a)
 ostream &operator<<(ostream &os, KH *a)
 {
     os << (PS *)a;
-    os << a->nm << setw(7) << '|' << setw(15) << '|' << endl;
-    cout << '|' << setfill('=') << setw(134) << '|' << setfill(' ') << endl;
+    os << a->nm << setw(7) << '|';
     return os;
 }
 
@@ -79,14 +76,18 @@ Ds *KH ::getDs_dv()
     return ds_dv;
 }
 
-bool tach_sdt(string a)
+string tach_id(string a, int k)
 {
     string b = "";
-    b = b + a[0] + a[1] + a[2];
-    if (b == "VIP")
-        return true;
-    return false;
-}
+    while (a[a.length() - 1] != 'H' and a[a.length() - 1] != 'V')
+    {
+        b = a[a.length() - 1] + b;
+        a.pop_back();
+    }
+    if (k == 1)
+        return b;
+    return a;
+} 
 
 void ds_sp_file(Ds *&ds_sp, KH *kh)
 {
@@ -163,38 +164,4 @@ void ds_dv_file(Ds *&ds_dv, KH *kh)
             }
         }
     }
-}
-
-long int KH ::thanh_tien()
-{
-    Ds *tg = ds_sp;
-    long int t1 = 0, t2 = 0;
-    DV *dv;
-    SP *sp;
-    if (tg == NULL)
-        t1 = 0;
-    else
-    {
-        while (tg != NULL)
-        {
-            sp = (SP *)tg->getData();
-            t1 += sp->tong_tien();
-            tg = tg->getNext();
-        }
-    }
-
-    tg = ds_dv;
-    if (tg == NULL)
-        t2 = 0;
-    else
-    {
-        while (tg != NULL)
-        {
-            dv = (DV *)tg->getData();
-            t2 += dv->getGdv();
-            tg = tg->getNext();
-        }
-    }
-
-    return t1 + t2;
 }

@@ -1,28 +1,105 @@
-3
+10
 0001
 1
 Dior New Look Dress
 00001
-1
-3200000
+5
+300000
 0002
 2
-Vay Dior New Look
+Dior New Look Dress
 00001
-1
-3200000
+4
+300000
 Lady Dior Bag
 00002
-1
-4800000
+4
+9430064
 0003
 2
 Dior Caro Bag
 00003
 1
-5040000
+4875689
 Dior Book Tote
 00004
+5
+6266274
+0004
+3
+Medium Lady D-Lite Bag
+00005
+2
+7489016
+Cropped Jacket
+00006
+2
+7299881
+D-Academy Loafer
+00007
+4
+9226682
+0005
 1
-6300000
-
+Miss Caro Mini Bag
+00008
+4
+3282956
+0006
+5
+Petit CD NeckLace
+00009
+5
+5590853
+T-shirt 
+00010
+2
+5842367
+Dway Slide
+00011
+3
+3007614
+Medium Dior Book Tote 
+00012
+3
+3270816
+Dior Star Earrings
+00013
+5
+8105517
+0007
+4
+Tank Top
+00014
+5
+7258184
+Petit CD Bracelet
+00015
+5
+5227511
+DiorSignature S10F
+00016
+4
+9962917
+Dior Caro Dahlia Wallet
+00017
+3
+47854147
+0008
+1
+Dway Heeled Slide
+00018
+1
+7314396
+0009
+1
+Embroidered Sweater
+00019
+3
+9243843
+0010
+1
+Dior Star Sneaker
+00020
+4
+3556733

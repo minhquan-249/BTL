@@ -102,9 +102,7 @@ void ds_sanpham(Ds* &ds_sp){
             i++;
             hoi_nhap();
             cin >> x;
+            cin.ignore();
         }while(x == 1);
     }
 }
-
-
-

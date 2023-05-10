@@ -1,11 +1,27 @@
-2
+5
 0001
 2
-Thue nhan vien cham soc
+Nhan vien cham soc
 300000
-Van chuyen hang Hoa
+Van chuyen hang hoa
 500000
 0003
 1
 Mua tra gop
 100000
+0005
+3
+Nhan vien cham soc
+400000
+Van chuyen hang hoa
+800000
+Goi do an
+300000
+0006
+1
+Bao cua hang 1 ngay
+30000000
+0007
+1
+Nhan vien cham soc
+500000

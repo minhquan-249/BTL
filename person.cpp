@@ -118,19 +118,6 @@ istream &operator>>(istream &is, PS *&a)
     return is;
 }
 
-string tach_id(string a, int k)
-{
-    string b = "";
-    while (a[a.length() - 1] != 'H' and a[a.length() - 1] != 'V')
-    {
-        b = a[a.length() - 1] + b;
-        a.pop_back();
-    }
-    if (k == 1)
-        return b;
-    return a;
-}
-
 ostream &operator<<(ostream &os, PS *a)
 {
     os << '|' << setw(20) << a->ht;
@@ -193,4 +180,13 @@ void PS ::setNs(NS ns)
 NS PS ::getNs()
 {
     return ns;
+}
+
+bool tach_sdt(string a)
+{
+    string b = "";
+    b = b + a[0] + a[1] + a[2];
+    if (b == "VIP")
+        return true;
+    return false;
 }

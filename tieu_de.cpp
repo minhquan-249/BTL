@@ -139,7 +139,7 @@ void td_sp()
     cout << endl;
     cout << '|' << setfill('=') << setw(139) << '|' << setfill(' ') << endl;
     cout << '|' << setw(20) << "Ho ten";
-    cout << '|' << setw(15) << "So dien thoai";
+    cout << '|' << setw(15) << "Ma khach hang";
     cout << '|' << setw(13) << "Ngay mua";
     cout << '|' << setw(25) << "Ten san pham";
     cout << '|' << setw(20) << "Ma san pham";
@@ -154,7 +154,7 @@ void td_dv()
     cout << endl;
     cout << '|' << setfill('=') << setw(93) << '|' << setfill(' ') << endl;
     cout << '|' << setw(20) << "Ho ten";
-    cout << '|' << setw(15) << "So dien thoai";
+    cout << '|' << setw(15) << "Ma khach hang";
     cout << '|' << setw(13) << "Ngay mua";
     cout << '|' << setw(25) << "Ten dich vu";
     cout << '|' << setw(15) << "Gia dich vu" << '|' << endl;
@@ -180,7 +180,7 @@ void line_page_sp()
 void line_page_dv()
 {
     cout << '|' << setw(25) << ' ';
-    cout << '|' << setw(15) << " |" << endl;
+    cout << '|' << setw(16) << " |" << endl;
 }
 
 void td_hd()
@@ -192,7 +192,7 @@ void td_hd()
     cout << '|' << setw(15) << "So dien thoai";
     cout << '|' << setw(15) << "Tien san pham";
     cout << '|' << setw(15) << "Tien dich vu";
-    cout << '|' << setw(15) << "Tong tien|" << endl;
+    cout << '|' << setw(16) << "Tong tien|" << endl;
     cout << '|' << setfill('=') << setw(101) << '|' << setfill(' ') << endl;
 }
 

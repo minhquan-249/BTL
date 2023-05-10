@@ -1,24 +1,31 @@
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
-void tach_id(string a, int k)
+void td_person()
 {
-    string b = "";
-    while ((a[a.length() - 1] != 'H' )|| (a[a.length() - 1] != 'V'))
-    {
-        b = a[a.length() - 1] + b;
-        a.pop_back();
-    }
-    if (k == 1)
-        cout<< b;
-    cout<< a;
+    cout << '|' << setw(20) << "Ho ten";
+    cout << '|' << setw(13) << "Nam sinh";
+    cout << '|' << setw(15) << "Ma";
+    cout << '|' << setw(15) << "So dien thoai";
+    cout << '|' << setw(10) << "Gioi tinh";
+    cout << '|' << setw(20) << "Dia chi";
+}
+
+void td_khnor()
+{
+    cout << endl;
+    cout << '|' << setfill('=') << setw(119) << '|' << setfill(' ') << endl;
+    td_person();
+    cout << '|' << setw(13) << "Ngay mua" << setw(7)<<'|'<<endl;
+    cout << '|' << setfill('=') << setw(119) << '|' << setfill(' ') << endl;
 }
 
 int main()
 {
-    string x="KH0001";
-    tach_id(x,1);
+    td_khnor();
+    return 0;
 }
 

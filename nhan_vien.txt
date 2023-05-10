@@ -1,4 +1,4 @@
-2
+5
 Phung Thanh Do
 11 02 1986
 001
@@ -13,5 +13,29 @@ Ly Mac Sau
 0230027892
 Nu
 Binh Duong
+Nhan vien
+4000000
+Bui Minh Cuong
+10 03 1970
+003
+0978563412
+Nam
+Ha Tay
+Bao ve
+3000000
+Nguyen Thi Lan
+10 04 1997
+004
+0987654321
+Nu
+Ho Chi Minh
+Nhan vien
+4000000
+Nguyen Thi Linh
+14 05 1998
+005
+0987654323
+Nu
+Ca Mau
 Nhan vien
 4000000
